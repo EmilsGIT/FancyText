@@ -4,27 +4,54 @@ Plugin Name:  FancyText
 Description:  Plugin that makes text fancy
 Version:      1.0.0
 Author:       Emil
-Text Domain:  Da Boi
+Text Domain:  Blyat
  */
-
-if(! function_exists("add_action")){
-echo "What do you think you're doing?";
-exit;
-}
 
 class FancyText{
     function __construct(){
         add_action("init", array($this, "RunFilters"));
     }
 
-    function FancyWordThing($and){
-        $and = str_replace ("and", "further more", $and);
-        return $and;
+    function ReplaceSo($so){
+        $so = str_replace (" so ", " thus ", $so);
+        return $so;
+    }
+    function ReplaceYour($your){
+        $your = str_replace (" your ", " thy ", $your);
+        return $your;
+    }
+    function ReplaceWho($who){
+        $who = str_replace (" who ", " whom ", $who);
+        return $who;
+    }
+    
+    function Replaceexceedingly($exceedingly){
+        $exceedingly = str_replace (" very ", " exceedingly ", $exceedingly);
+        return $exceedingly;
+    }
+    function Replaceimbecile($imbecile){
+        $imbecile = str_replace (" idiot ", " imbecile ", $imbecile);
+        return $imbecile;
+    }
+    function Replacegreetings($greetings){
+        $greetings = str_replace (" hello ", "greetings", $greetings);
+        return $greetings;
+    }
+    function Replaceunintelligent($unintelligent){
+        $unintelligent = str_replace ("stupid ", " unintelligent ", $unintelligent);
+        return $unintelligent;
     }
 
     function RunFilters(){
-        add_filter("the_content", array($this, "FancyWordThing"));
+        add_filter("the_content", array($this, "ReplaceSo"));
+        add_filter("the_content", array($this, "ReplaceYour"));
+        add_filter("the_content", array($this, "ReplaceWho"));
+        add_filter("the_content", array($this, "ReplaceExceedingly"));
+        add_filter("the_content", array($this, "Replaceimbecile"));
+        add_filter("the_content", array($this, "ReplaceGreetings"));
+        add_filter("the_content", array($this, "Replaceunintelligent"));
     }
+
 }
 
 if (class_exists('FancyText')) {
